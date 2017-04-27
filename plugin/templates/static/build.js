@@ -5,14 +5,15 @@ stealTools.export({
 		config: __dirname + "/package.json!npm"
 	},
 	outputs: {
-		"+cjs": {},
-		"+amd": {},
-		"+global-js": {}
+		// Don't want to minify? Remove the +min bits
+		"+cjs+min": {},
+		"+amd+min": {},
+		"+global-js+min": {}
 	}
-}).catch(function(e){
-	
-	setTimeout(function(){
-		throw e;
-	},1);
-	
+}, {
+	min: {minify: true}
+}).catch(function (error) {
+	setTimeout(function () {
+		throw error;
+	}, 1);
 });
